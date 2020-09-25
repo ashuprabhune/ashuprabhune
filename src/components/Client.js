@@ -3,9 +3,9 @@ import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
 import { ApolloProvider } from 'react-apollo';
 import { setContext } from '@apollo/client/link/context';
 
-
 const httpLink = new createHttpLink({ uri: 'https://api.github.com/graphql' });
-const token = '80fd8b46450ce3bd3216127fa79d5ec6141aa48c';
+const token = process.env.REACT_APP_GH_TOKEN;
+
 const graphQLClient = (props) => {
 
   const authLink = setContext((_, { headers }) => {
