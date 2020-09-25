@@ -3,13 +3,13 @@ node_js:
    - 12.18.3
 
 install:
-   npm install --save apollo-boost react-apollo graphql
-   npm add graphql-request graphql
-   npm install --save @apollo/client graphql
-   npm install --save @material-ui/core
-   npm install --save @material-ui/icons
-   npm install --save moment react-moment
-   npm ci
+   - npm install --save apollo-boost react-apollo graphql
+   - npm add graphql-request graphql
+   - npm install --save @apollo/client graphql
+   - npm install --save @material-ui/core
+   - npm install --save @material-ui/icons
+   - npm install --save moment react-moment
+   - npm ci
 
 script:
    - npm run build
