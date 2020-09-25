@@ -2,9 +2,9 @@ language: node_js
 cache: npm
 
 deploy:
-	provider: pages
-	skip-cleanup: true
-	github-token: $GitHub_Token
-	local_dir: build
-	on:
-		branch:master
+   provider: pages
+   skip-cleanup: true
+   github-token: $GitHub_Token
+   local_dir: build
+   on:
+      branch:master
