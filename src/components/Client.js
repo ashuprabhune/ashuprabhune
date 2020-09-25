@@ -5,7 +5,7 @@ import { setContext } from '@apollo/client/link/context';
 
 
 const httpLink = new createHttpLink({ uri: 'https://api.github.com/graphql' });
-const token = '4d6874995c5eb8e90f0198381fc93ece622eab14';
+const token = '80fd8b46450ce3bd3216127fa79d5ec6141aa48c';
 const graphQLClient = (props) => {
 
   const authLink = setContext((_, { headers }) => {
