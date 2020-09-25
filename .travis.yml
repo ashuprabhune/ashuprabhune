@@ -10,9 +10,6 @@ install:
    - npm install --save @material-ui/icons
    - npm install --save moment react-moment
    - npm ci
-
-script:
-   - npm run build
    
 deploy:
    provider: pages
