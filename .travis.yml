@@ -17,4 +17,6 @@ deploy:
    github-token: $GitHub_Token
    local_dir: build
    on:
-      branch:master
+      branches:    # ← new!
+         only:      # ← new!
+           - master # ← new!
