@@ -28,7 +28,7 @@ const topics = ['Ashish','asas','asdasdas','arwef','ASD','ASDASD','EFAFEF','ASEF
 console.log(props.info.id);
 return (
   <ThemeProvider theme={theme}>
-  <Grid container direction="row"  spacing={2} alignItems="center" style={{paddingTop:"5%",paddingBottom:"5%"}}>
+  <Grid container direction="row"  spacing={2} alignItems="center" style={{paddingTop:"1%",paddingBottom:"5%"}}>
     <Grid item xs={12} sm={12} md={4} lg={4}>
 
       <AboutMe topics={topics} name={props.info.name} company={props.info.company} avatarUrl={props.info.avatarUrl}/>

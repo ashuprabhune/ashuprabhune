@@ -6,7 +6,7 @@ import Aux from './Auxilliary'
 import Grid from '@material-ui/core/Grid';
 import Bioinfo from  './BioInfo'
 import { InMemoryCache } from '@apollo/client';
-
+import Header from './Header';
 const GET_REPO_INFO = gql`
 query  {
     viewer {
@@ -85,8 +85,9 @@ class PinnedItems extends Component {
   render(){
 
   return(
-
-    <Grid container  style={{paddingTop:"5%",paddingBottom:"5%"}}>
+    <Aux>
+        <Header />
+    <Grid container  style={{paddingTop:"-1%",paddingBottom:"5%"}}>
 
       <Query query={GET_BIO_INFO} key={"1"}>
         {({ loading, error, data }) => (
@@ -117,7 +118,7 @@ class PinnedItems extends Component {
       </Query>
     </Grid>
   </Grid>
-
+</Aux>
 
   )}
 };
