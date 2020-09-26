@@ -79,6 +79,68 @@ const GET_BIO_INFO = gql`
 }
 `;
 
+const GET_RECENT_REPOS = gql`
+  query GetRecentRepos {
+    viewer {
+      id
+      repositories(
+        orderBy: { field: PUSHED_AT, direction: ASC }
+        last: 3
+        privacy: PUBLIC
+        isFork: false
+      ) {
+        edges {
+          node {
+            ... on Repository {
+              name
+              description
+              homepageUrl
+              pushedAt
+              url
+              openGraphImageUrl
+              usesCustomOpenGraphImage
+              refs(refPrefix: "refs/heads/", last: 3) {
+                nodes {
+                  name
+                  target {
+                    ... on Commit {
+                      history {
+                        totalCount
+                      }
+                      messageHeadline
+                      pushedDate
+                    }
+                  }
+                }
+              }
+              languages(first: 100) {
+                edges {
+                  node {
+                    name
+                    color
+                  }
+                }
+              }
+              repositoryTopics(first: 100) {
+                edges {
+                  node {
+                    topic {
+                      name
+                    }
+                  }
+                }
+              }
+              pullRequests(first: 100) {
+                totalCount
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
 
 class PinnedItems extends Component {
 
@@ -87,7 +149,7 @@ class PinnedItems extends Component {
   return(
     <Aux>
         <Header />
-    <Grid container  style={{paddingTop:"-1%",paddingBottom:"5%"}}>
+    <Grid container  style={{paddingTop:"0%",paddingBottom:"2%"}}>
 
       <Query query={GET_BIO_INFO} key={"1"}>
         {({ loading, error, data }) => (
@@ -111,7 +173,21 @@ class PinnedItems extends Component {
             {error && <div>Error...</div>}
             {data && (
 
-              <UIComponent pinnedItems = {data.viewer.pinnedItems.edges} />
+              <UIComponent pinnedItems = {data.viewer.pinnedItems.edges} header="Featured Projects"/>
+            )}
+          </Aux>
+        )}
+      </Query>
+    </Grid>
+    <Grid container direction="row" spacing={3}  alignItems="center" style={{paddingTop:"5%",paddingBottom:"5%"}}>
+      <Query query={GET_RECENT_REPOS}>
+        {({ loading, error, data }) => (
+          <Aux>
+            {loading && <div>Loading...</div>}
+            {error && <div>Error...</div>}
+            {data && (
+
+              <UIComponent pinnedItems = {data.viewer.repositories.edges} header="Recent activity"/>
             )}
           </Aux>
         )}

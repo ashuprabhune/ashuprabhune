@@ -24,7 +24,7 @@ const theme = createMuiTheme({
 export default function FullWidthGrid(props) {
 
 
-const topics = ['Ashish','asas','asdasdas','arwef','ASD','ASDASD','EFAFEF','ASEFGAVG']
+const topics = ['Java', 'C++', 'Python', 'ReactJS', 'MySQL', 'Sprinboot','Linux']
 console.log(props.info.id);
 return (
   <ThemeProvider theme={theme}>
