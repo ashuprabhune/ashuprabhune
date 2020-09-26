@@ -1,13 +1,13 @@
 import React from 'react';
-import './App.css';
-import Main from './components/Main'
+import classes from './App.module.css';
 import GraphQLClient from './components/Client'
+import PinnedItems from './components/PinnedItems'
 
 function App() {
   return (
-    <div className="App">
+    <div className={classes.App}>
       <GraphQLClient>
-        <Main />
+        <PinnedItems />
       </GraphQLClient>
     </div>
   );

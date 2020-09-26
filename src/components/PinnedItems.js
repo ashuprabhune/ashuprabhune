@@ -86,7 +86,7 @@ class PinnedItems extends Component {
 
   return(
 
-    <Grid container alignItems="center" style={{paddingLeft:"20%",paddingRight:"20%",paddingTop:"5%",paddingBottom:"5%"}}>
+    <Grid container  style={{paddingTop:"5%",paddingBottom:"5%"}}>
 
       <Query query={GET_BIO_INFO} key={"1"}>
         {({ loading, error, data }) => (

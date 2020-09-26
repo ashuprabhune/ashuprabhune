@@ -28,7 +28,6 @@ const theme = createMuiTheme({
 
 const useStyles = makeStyles({
   root: {
-    minWidth:350,
     height:350,
     color:"white",
     borderRadius:"10px",
@@ -53,8 +52,8 @@ const useStyles = makeStyles({
 
   },
   avatar: {
-    width: 80,
-    height: 80,
+    width: 100,
+    height: 100,
     margin: 'auto',
     zIndex: 10,
     top:10
