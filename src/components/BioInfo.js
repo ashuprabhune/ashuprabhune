@@ -24,14 +24,14 @@ const theme = createMuiTheme({
 export default function FullWidthGrid(props) {
 
 
-const topics = ['Java', 'C++', 'Python', 'ReactJS', 'MySQL', 'Sprinboot','Linux']
+const topics = ['Java', 'C++', 'Python', 'ReactJS', 'MySQL', 'Springboot','Linux']
 console.log(props.info.id);
 return (
   <ThemeProvider theme={theme}>
   <Grid container direction="row"  spacing={2} alignItems="center" style={{paddingTop:"1%",paddingBottom:"5%"}}>
     <Grid item xs={12} sm={12} md={4} lg={4}>
 
-      <AboutMe topics={topics} name={props.info.name} company={props.info.company} avatarUrl={props.info.avatarUrl}/>
+      <AboutMe topics={topics} name={props.info.name} location={props.info.location} company={props.info.company} profession = "Software Engineer" avatarUrl={props.info.avatarUrl}/>
     </Grid>
     <Grid item xs={12} sm={12} md={8} lg={8}>
       <Bio text={props.info.repository.object.text}/>

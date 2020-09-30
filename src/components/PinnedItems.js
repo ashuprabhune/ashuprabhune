@@ -65,6 +65,7 @@ const GET_BIO_INFO = gql`
     avatarUrl
     bio
    	company
+    location
     repository(name:"ashuprabhune"){
       id
       object(expression: "master:README.md") {
@@ -179,7 +180,7 @@ class PinnedItems extends Component {
         )}
       </Query>
     </Grid>
-    <Grid container direction="row" spacing={3}  alignItems="center" style={{paddingTop:"5%",paddingBottom:"5%"}}>
+    <Grid container direction="row" spacing={3}   alignItems="stretch" style={{paddingTop:"5%",paddingBottom:"5%"}}>
       <Query query={GET_RECENT_REPOS}>
         {({ loading, error, data }) => (
           <Aux>

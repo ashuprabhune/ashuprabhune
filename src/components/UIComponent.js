@@ -5,9 +5,13 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Aux from './Auxilliary'
 import Typography from "@material-ui/core/Typography";
-
+const useStyles = makeStyles({
+   section : {
+  height: "100%"
+}});
 
 export default function FullWidthGrid(props) {
+    const classes = useStyles();
   const featuredRepoList = []
     let lastCommit
 const repositories = props.pinnedItems
@@ -40,6 +44,7 @@ const displayRepositories = Object.keys(repositories)
         const demoLink = repositories[igKey].homepageUrl
         return (
                   <Grid item xs={12} sm={12} md={4} lg={4} key={repoLink}>
+
                   <Card
                     topics = {topics}
                     name={repositories[igKey].node.name}
@@ -49,9 +54,14 @@ const displayRepositories = Object.keys(repositories)
                     commitMessage={commitCount }
                     commitBranch={lastCommitBranch}
                     date={lastCommitTime}
+                    repoImage={repositories[igKey].node.usesCustomOpenGraphImage}
+
+                    imageurl={repositories[igKey].node.openGraphImageUrl}
                     key={repoLink}
                     />
+                  
                   </Grid>
+
 
               )
       });
@@ -59,9 +69,10 @@ const displayRepositories = Object.keys(repositories)
 return (
         <Aux>
           <Grid item xs={12}>
-            <Typography   variant="h5" component="h2">
-            {props.header}
-          </Typography> <h5>({lastCommit} )</h5>
+            <Typography   variant="h5" component="h2" style={{fontFamily: 'Open Sans'}}>
+              <span style = {{color:'#F5F5F5', fontSize:20, paddingRight: 5}} > {props.header} </span>
+                <span style = {{color:'#F5F5F5', fontSize:15}} > (last commit {lastCommit})</span>
+          </Typography>
           </Grid>
           {displayRepositories}
         </Aux>

@@ -6,12 +6,13 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Chip from "@material-ui/core/Chip";
-import GitHubIcon from "@material-ui/icons/GitHub";
+import CodeIcon from '@material-ui/icons/Code';
 import UpdateIcon from "@material-ui/icons/Update";
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import FlareIcon from "@material-ui/icons/Flare";
 import { createMuiTheme,ThemeProvider  } from '@material-ui/core/styles';
 import Divider from "@material-ui/core/Divider";
+import CardMedia from '@material-ui/core/CardMedia';
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -29,6 +30,8 @@ const theme = createMuiTheme({
 const useStyles = makeStyles({
   root: {
     Width:350,
+    height:620,
+    height:'100%',
     color:"white",
     borderRadius:"10px",
     paddingBottom:"0",
@@ -36,7 +39,8 @@ const useStyles = makeStyles({
     boxShadow: "8px 8px 5px #222424"
   },
   media: {
-    height: 140
+    height: 180,
+
   },
   html: {
     fontSize: 12
@@ -46,19 +50,70 @@ const useStyles = makeStyles({
     height: 2,
   },
   header:{
-    height:80,
+
+    height:80
 
   },
   description:{
-    height:100
+    height:340,
+
   },
   info:{
-    height: 60
+    height: 110
 
   },
   footer:{
-    height:20
+    height:'10%'
   },
+  python:{
+    backgroundColor: '#ffbf00',
+    color:'black'
+  },
+  java:{
+    backgroundColor: '#5382a1',
+    color:'white'
+  },
+  reactJS:{
+    backgroundColor: '#61DBFB',
+    color:'black'
+  },
+  mysql:{
+    backgroundColor: '#f89820',
+    color:'black'
+  },
+  javascript:{
+    backgroundColor: '#ffbf00',
+    color:'black'
+  },
+  cpp:{
+    backgroundColor: '#00008b',
+    color:'white'
+  },
+  linux:{
+    backgroundColor: '#dd4814',
+    color:'white'
+  },
+  clojure:{
+    backgroundColor: '#62B132',
+    color:'white'
+  },
+  springboot:{
+    backgroundColor: '#62B132',
+    color:'white'
+  },
+  html5:{
+    backgroundColor: '#e34c26',
+    color:'white'
+  },
+  css:{
+    backgroundColor: '#62B132',
+    color:'white'
+  },
+  typography: {
+    nowrap : "true",
+    fontFamily: 'Open Sans'
+  }
+
 });
 
 const useStyles1 = makeStyles((theme) => ({
@@ -77,8 +132,30 @@ const useStyles1 = makeStyles((theme) => ({
 }));
 
 export default function MediaCard(props) {
+  let classname=[]
+  const colors = {'python':'python',
+                  'java':'java',
+                  'reactjs':'reactJS',
+                  'javascript':'javascript',
+                  'linux':'linux',
+                  'mysql':'mysql',
+                  'c++':'cpp',
+                  'cpp':'cpp',
+                  'clojure' : 'clojure',
+                  'spring-boot' : 'springboot',
+                  'html':'html5'
+                  };
   const classes = useStyles();
   const classes1 = useStyles1();
+  let repoImage = null
+   if(props.repoImage)
+    repoImage =  <CardMedia
+          className={classes.media}
+          image={props.imageurl}
+          title={props.name}/>
+
+
+
 
   return (
   <ThemeProvider theme={theme}>
@@ -86,12 +163,15 @@ export default function MediaCard(props) {
       <CardActionArea className = {classes.header} style={{backgroundColor:"#404242" }}>
         <div className={classes1.root}>
           {props.topics.map((index) => {
-            return <Chip color="secondary" key={index} size="small" style={{ fontSize: 10, color:"white", boxShadow: "1px 1px 1px #2b2d2d "}}  label={index} />
+
+            return <Chip color="secondary" key={index} className= {classes[colors[index]]} size="small" style={{ fontSize: 10, boxShadow: "1px 1px 1px #2b2d2d "}}  label={index} />
           })}
         </div>
+
       </CardActionArea>
       <CardActionArea style={{backgroundColor:"#2b2d2d"}}>
         <CardContent className={classes.description} align="left">
+          {repoImage}
           <Typography gutterBottom  variant="h5" component="h2">
             {props.name}
           </Typography>
@@ -132,8 +212,8 @@ export default function MediaCard(props) {
       </CardActionArea>
     <CardActionArea  style={{backgroundColor:"#4faeae"}}>
       <CardActions style={{justifyContent:'center', height:'inherit'}}>
-        <GitHubIcon style={{height:'100%'}}/>
-        GitHub
+        <CodeIcon style={{height:'100%'}}/>
+        Link to Repo
       </CardActions>
     </CardActionArea>
 
