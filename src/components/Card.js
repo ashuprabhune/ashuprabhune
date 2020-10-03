@@ -30,13 +30,16 @@ const theme = createMuiTheme({
 const useStyles = makeStyles({
   root: {
     Width:350,
-    height:620,
     height:'100%',
     color:"white",
     borderRadius:"10px",
     paddingBottom:"0",
     backgroundColor:"#555656",
-    boxShadow: "8px 8px 5px #222424"
+    boxShadow: "8px 8px 5px #222424",
+    display:'flex',
+    flexDirection: 'column',
+    height:'100%',
+
   },
   media: {
     height: 180,
@@ -50,20 +53,34 @@ const useStyles = makeStyles({
     height: 2,
   },
   header:{
-
-    height:80
+    flex: '0 1 15%'
 
   },
   description:{
-    height:340,
+    flex: '1',
+    alignItems:'flex-start'
+
+  },
+  content:{
+    display:'flex',
+    flexDirection: 'column',
+    height:'100%',
+    justifyContent:'space-between',
+    alignSelf:'flex-start'
+
+  },
+  title:{
+
+
 
   },
   info:{
-    height: 110
+
+
 
   },
   footer:{
-    height:'10%'
+    flex: '1 1 10%'
   },
   python:{
     backgroundColor: '#ffbf00',
@@ -149,29 +166,30 @@ export default function MediaCard(props) {
   const classes1 = useStyles1();
   let repoImage = null
    if(props.repoImage)
-    repoImage =  <CardMedia
+    repoImage = <div style = {{padding: 15, paddingTop:0}}> <CardMedia
           className={classes.media}
           image={props.imageurl}
-          title={props.name}/>
+          title={props.name}/></div>
 
-
+        console.log(props.url);
 
 
   return (
   <ThemeProvider theme={theme}>
     <Card className={classes.root}>
-      <CardActionArea className = {classes.header} style={{backgroundColor:"#404242" }}>
+      <CardActionArea className = {classes.header} style={{backgroundColor:"#274f59" }}>
         <div className={classes1.root}>
           {props.topics.map((index) => {
 
-            return <Chip color="secondary" key={index} className= {classes[colors[index]]} size="small" style={{ fontSize: 10, boxShadow: "1px 1px 1px #2b2d2d "}}  label={index} />
+            return <Chip color="secondary" key={index} className= {classes[colors[index]]} size="small" style={{ fontSize: 12, boxShadow: "1px 1px 1px #2b2d2d ",fontFamily:'Open Sans'}}  label={index} />
           })}
         </div>
-
+        {repoImage}
       </CardActionArea>
-      <CardActionArea style={{backgroundColor:"#2b2d2d"}}>
-        <CardContent className={classes.description} align="left">
-          {repoImage}
+      <CardContent className={classes.description} style={{backgroundColor:"#182f34",padding:0,fontFamily:'Open Sans'}}>
+        <div className={classes.content}>
+        <CardContent className={classes.title} align="left">
+
           <Typography gutterBottom  variant="h5" component="h2">
             {props.name}
           </Typography>
@@ -179,8 +197,9 @@ export default function MediaCard(props) {
             {props.description}
           </Typography>
         </CardContent>
-        <Divider light={true} variant="middle" style={{backgroundColor:"#4faeae"}}/>
-        <CardContent className={classes.info} align="left" >
+
+        <CardContent className={classes.info} align="left" style={{fontFamily:'Open Sans'}}>
+          <Divider light={true} variant="middle" style={{backgroundColor:"#4faeae","marginBottom":15}}/>
           <Typography
             className={classes.html}
 
@@ -209,8 +228,9 @@ export default function MediaCard(props) {
             {' '}{props.commitMessage} {" commits"}
           </Typography>
         </CardContent>
-      </CardActionArea>
-    <CardActionArea  style={{backgroundColor:"#4faeae"}}>
+      </div>
+    </CardContent>
+    <CardActionArea target="_blank"  href={props.url} style={{backgroundColor:"#4faeae",fontFamily:'Open Sans'}}>
       <CardActions style={{justifyContent:'center', height:'inherit'}}>
         <CodeIcon style={{height:'100%'}}/>
         Link to Repo

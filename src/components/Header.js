@@ -50,21 +50,19 @@ export default function FullWidthGrid() {
       initial={{ opacity: 1 }}
       animate={{
         opacity: isScrollingUp ? 1 : 0,
-        y: isScrollingUp ? 0 : '-50px'
+        y: isScrollingUp ? 0 : '-100px'
       }}
     >
-    <AppBar position="static" style={{ background:"#262828", color:"white", boxShadow:"None"}}>
+    <AppBar position="static" style={{ background:"#112327", color:"white", boxShadow:"None"}}>
 
-      <Toolbar>
+      <Toolbar style={{paddingLeft:0, paddingRight:0}}>
 
-          <Typography variant="h6" className={classes.title}>
-            Ashish Prabhune
+          <Typography variant="h5" className={classes.title}>
+            @ashuprabhune
           </Typography>
-          {/*<button className='flex items-center justify-center p-1 px-2 font-bold tracking-wide uppercase transition duration-200 border-2 border-transparent rounded bg-gray-70 hover:bg-gray-50 hover:text-white focus:outline-none focus:border-gray-10'>
-            <DocumentText className='w-4 h-4 mr-1' />
-            resume
-  </button>*/}
-  <Button color="inherit"><EmailIcon style={{color:"#4faeae"}}/>Email Me</Button>
+
+  <Button   component="a" href="mailto:ashuprabhune@gmail.com" variant="contained" style={{backgroundColor:'#4faeae',fontWeight:600}} ><EmailIcon style={{color:'black', paddingRight:2}}/>   Email Me</Button>
+
 
   </Toolbar>
 </AppBar>

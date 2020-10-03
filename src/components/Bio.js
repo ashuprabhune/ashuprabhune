@@ -15,7 +15,12 @@ import { red } from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { createMuiTheme,ThemeProvider  } from '@material-ui/core/styles';
 import Divider from "@material-ui/core/Divider";
-
+const ReactMarkdown = require('react-markdown')
+const htmlParser = require('react-markdown/plugins/html-parser')
+const parseHtml = htmlParser({
+  isValidNode: node => node.type !== 'script',
+  processingInstructions: [/* ... */]
+})
 
 const theme = createMuiTheme({
   palette: {
@@ -37,10 +42,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     minWidth:350,
     color:'white',
-    minHeight:450,
+
     height: "100%",
     boxShadow: "8px 8px 5px #222424",
     borderRadius: '10px',
+    padding:'auto',
     ["@media(max-width: 1200px )"]:{
 
     },
@@ -77,7 +83,11 @@ export default function RecipeReviewCard(props) {
 
   return (
     <ThemeProvider theme={theme}>
-    <Card className={classes.root} style={{backgroundColor:"#2b2d2d"}}>
+    <Card className={classes.root} style={{backgroundColor:"#182f34"}}>
+      <ReactMarkdown  source={props.text}
+  escapeHtml={false}
+
+/>
       <CardActions style = {{padding:0}}>
           <AnimatePresence exitBeforeEnter initial={false}>
                          {readMore ? (

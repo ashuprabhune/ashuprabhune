@@ -40,7 +40,7 @@ const displayRepositories = Object.keys(repositories)
         const lastCommitMsg = recentRef.target.messageHeadline
         const lastCommitTime = moment(recentRef.target.pushedDate).fromNow()
         const lastCommitBranch = recentRef.name
-        const repoLink = repositories[igKey].url
+        const repoLink = repositories[igKey].node.url
         const demoLink = repositories[igKey].homepageUrl
         return (
                   <Grid item xs={12} sm={12} md={4} lg={4} key={repoLink}>
@@ -59,7 +59,7 @@ const displayRepositories = Object.keys(repositories)
                     imageurl={repositories[igKey].node.openGraphImageUrl}
                     key={repoLink}
                     />
-                  
+
                   </Grid>
 
 

@@ -5,6 +5,7 @@ import UIComponent from './UIComponent'
 import Aux from './Auxilliary'
 import Grid from '@material-ui/core/Grid';
 import Bioinfo from  './BioInfo'
+import Loading from './Loading'
 import { InMemoryCache } from '@apollo/client';
 import Header from './Header';
 const GET_REPO_INFO = gql`
@@ -150,12 +151,12 @@ class PinnedItems extends Component {
   return(
     <Aux>
         <Header />
-    <Grid container  style={{paddingTop:"0%",paddingBottom:"2%"}}>
+    <Grid container alignItems="stretch"  style={{paddingTop:"0%",paddingBottom:"2%"}}>
 
       <Query query={GET_BIO_INFO} key={"1"}>
         {({ loading, error, data }) => (
           <Aux>
-            {loading && <div>Loading...</div>}
+            {loading && <Loading />}
             {error && <div>Error...</div>}
             {data && (
 
@@ -166,11 +167,11 @@ class PinnedItems extends Component {
       </Query>
 
 
-    <Grid container direction="row" spacing={3}  alignItems="center" style={{paddingTop:"5%",paddingBottom:"5%"}}>
+    <Grid container direction="row" spacing={3}  alignItems="stretch" style={{paddingTop:"2%",paddingBottom:"2%"}}>
       <Query query={GET_REPO_INFO}>
         {({ loading, error, data }) => (
           <Aux>
-            {loading && <div>Loading...</div>}
+            {loading && <Loading />}
             {error && <div>Error...</div>}
             {data && (
 
@@ -180,11 +181,11 @@ class PinnedItems extends Component {
         )}
       </Query>
     </Grid>
-    <Grid container direction="row" spacing={3}   alignItems="stretch" style={{paddingTop:"5%",paddingBottom:"5%"}}>
+    <Grid container direction="row" spacing={3}  alignItems="stretch" style={{paddingTop:"2%",paddingBottom:"2%"}}>
       <Query query={GET_RECENT_REPOS}>
         {({ loading, error, data }) => (
           <Aux>
-            {loading && <div>Loading...</div>}
+            {loading && <Loading />}
             {error && <div>Error...</div>}
             {data && (
 

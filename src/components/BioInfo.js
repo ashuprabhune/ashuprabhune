@@ -28,7 +28,7 @@ const topics = ['Java', 'C++', 'Python', 'ReactJS', 'MySQL', 'Springboot','Linux
 console.log(props.info.id);
 return (
   <ThemeProvider theme={theme}>
-  <Grid container direction="row"  spacing={2} alignItems="center" style={{paddingTop:"1%",paddingBottom:"5%"}}>
+  <Grid container direction="row"  spacing={2} alignItems="stretch" style={{paddingTop:"1%",paddingBottom:"2%"}}>
     <Grid item xs={12} sm={12} md={4} lg={4}>
 
       <AboutMe topics={topics} name={props.info.name} location={props.info.location} company={props.info.company} profession = "Software Engineer" avatarUrl={props.info.avatarUrl}/>

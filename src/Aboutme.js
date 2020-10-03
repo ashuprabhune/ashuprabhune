@@ -32,14 +32,13 @@ const theme = createMuiTheme({
 const useStyles = makeStyles({
   root: {
     height:450,
-
+    maxWidth:350,
     color:"white",
     borderRadius:"10px",
     paddingBottom:"0",
     backgroundColor:"#2b2d2d",
     boxShadow: "8px 8px 5px #222424",
-    fontFamily: 'Open Sans',
-    alignSelf:'flex-start'
+    fontFamily: 'Open Sans'
   },
   media: {
     height: 140
@@ -145,7 +144,7 @@ export default function MediaCard(props) {
   <ThemeProvider theme={theme}>
     <Card className={classes.root} >
 
-      <CardActionArea className={classes.header} style={{backgroundColor:"#274f59"}}>
+      <CardActionArea className={classes.header} style={{backgroundColor:"#404242"}}>
         <div className={classes1.root}>
           {props.topics.map((index) => {
             return <Chip  color="secondary" className= {classes[colors[index]]} key={index} size="small" style={{ fontSize: 12, boxShadow: "1px 1px 1px #2b2d2d "}}  label={index} />
@@ -155,7 +154,7 @@ export default function MediaCard(props) {
       </CardActionArea>
 
 
-      <CardActionArea className={classes.description} style={{backgroundColor:"#182f34"}}>
+      <CardActionArea className={classes.description} style={{backgroundColor:"#2b2d2d"}}>
         <CardContent  align="center">
           <Typography gutterBottom  variant="h5" component="h2">
               {props.name}
@@ -182,8 +181,8 @@ export default function MediaCard(props) {
       </CardActionArea>
 
 
-        <Button target="_blank" component='a' href="https://github.com/ashuprabhune" style={{width:"50%",backgroundColor:"black",color:"white",textTransform:"none"}}><CardActions><GitHubIcon style={{paddingRight:5}}/>{'  GitHub'}</CardActions></Button>
-          <Button target="_blank" component='a' href="https://www.linkedin.com/in/ashish-prabhune/"  style={{width:"50%",backgroundColor:"#2867B2",color:"white", textTransform:"none"}}><CardActions>Linked<LinkedInIcon/></CardActions></Button>
+        <Button style={{width:"50%",backgroundColor:"black",color:"white",textTransform:"none"}}><CardActions><GitHubIcon style={{paddingRight:5}}/>{'  GitHub'}</CardActions></Button>
+          <Button  style={{width:"50%",backgroundColor:"#2867B2",color:"white", textTransform:"none"}}><CardActions>Linked<LinkedInIcon/></CardActions></Button>
 
 
 
