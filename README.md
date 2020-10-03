@@ -1,6 +1,5 @@
 Software developer since 1995. mom rocked the cradle and I cuddled the pillow.
-<dl>
-  
+<dl> 
   <dt>Definition list</dt>
   <dd>Is something people use sometimes.</dd>
   
