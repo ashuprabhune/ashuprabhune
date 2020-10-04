@@ -35,7 +35,6 @@ const useStyles = makeStyles({
     borderRadius:"10px",
     paddingBottom:"0",
     backgroundColor:"#555656",
-    boxShadow: "8px 8px 5px #222424",
     display:'flex',
     flexDirection: 'column',
     height:'100%',
@@ -230,7 +229,7 @@ export default function MediaCard(props) {
         </CardContent>
       </div>
     </CardContent>
-    <CardActionArea target="_blank"  href={props.url} style={{backgroundColor:"#4faeae",fontFamily:'Open Sans'}}>
+    <CardActionArea target="_blank"  href={props.url} style={{backgroundColor:"#5f9ea0",fontFamily:'Open Sans'}}>
       <CardActions style={{justifyContent:'center', height:'inherit'}}>
         <CodeIcon style={{height:'100%'}}/>
         Link to Repo

@@ -44,7 +44,6 @@ const useStyles = makeStyles((theme) => ({
     color:'white',
 
     height: "100%",
-    boxShadow: "8px 8px 5px #222424",
     borderRadius: '10px',
     padding:'auto',
     ["@media(max-width: 1200px )"]:{

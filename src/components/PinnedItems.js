@@ -151,7 +151,7 @@ class PinnedItems extends Component {
   return(
     <Aux>
         <Header />
-    <Grid container alignItems="stretch"  style={{paddingTop:"0%",paddingBottom:"2%"}}>
+    <Grid container   style={{paddingTop:"0%",paddingBottom:"2%"}}>
 
       <Query query={GET_BIO_INFO} key={"1"}>
         {({ loading, error, data }) => (

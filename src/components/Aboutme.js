@@ -37,7 +37,7 @@ const useStyles = makeStyles({
     borderRadius:"10px",
     paddingBottom:"0",
     backgroundColor:"#2b2d2d",
-    boxShadow: "8px 8px 5px #222424",
+    
     fontFamily: 'Open Sans',
     alignSelf:'flex-start'
   },
