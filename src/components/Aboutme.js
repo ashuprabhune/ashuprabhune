@@ -12,6 +12,7 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import { createMuiTheme,ThemeProvider  } from '@material-ui/core/styles';
 import LocationCityTwoToneIcon from '@material-ui/icons/LocationCityTwoTone';
 import WorkTwoToneIcon from '@material-ui/icons/WorkTwoTone';
+
 import SchoolTwoToneIcon from '@material-ui/icons/SchoolTwoTone';
 
 import Avatar from '@material-ui/core/Avatar';
@@ -31,13 +32,15 @@ const theme = createMuiTheme({
 
 const useStyles = makeStyles({
   root: {
-    height:450,
 
+    
     color:"white",
     borderRadius:"10px",
     paddingBottom:"0",
     backgroundColor:"#2b2d2d",
-    
+    display:'flex',
+    flexDirection: 'column',
+    height:'100%',
     fontFamily: 'Open Sans',
     alignSelf:'flex-start'
   },
@@ -52,7 +55,8 @@ const useStyles = makeStyles({
     height: 2,
   },
   header:{
-    height:'30%',
+    maxHeight:140,
+    flex: '0 1 15%'
   },
   avatar: {
     width: 100,
@@ -66,7 +70,19 @@ const useStyles = makeStyles({
     top:10
   },
   description:{
-    height:'60%',
+    display:'flex',
+    flexDirection: 'column',
+    height:'100%',
+
+    alignSelf:'flex-start'
+
+  },
+  footer:{
+    bottom:0,
+    display:'flex',
+  },
+  content:{
+
 
   },
   button:{
@@ -106,7 +122,11 @@ const useStyles = makeStyles({
   typography: {
     nowrap : "true",
     fontFamily: 'Open Sans'
-  }
+  },
+  springboot:{
+    backgroundColor: '#62B132',
+    color:'white'
+  },
 
 
 });
@@ -138,14 +158,15 @@ export default function MediaCard(props) {
                   'Linux':'linux',
                   'MySQL':'mysql',
                   'C++':'cpp',
-                  'clojure' : 'clojure'
+                  'clojure' : 'clojure',
+                  'Spring Boot' : 'springboot',
                   };
   let classname=[]
   return (
   <ThemeProvider theme={theme}>
     <Card className={classes.root} >
 
-      <CardActionArea className={classes.header} style={{backgroundColor:"#274f59"}}>
+      <CardActionArea className={classes.header} style={{backgroundColor:"#274f59",fontFamily:'Open Sans'}}>
         <div className={classes1.root}>
           {props.topics.map((index) => {
             return <Chip  color="secondary" className= {classes[colors[index]]} key={index} size="small" style={{ fontSize: 12, boxShadow: "1px 1px 1px #2b2d2d "}}  label={index} />
@@ -155,38 +176,41 @@ export default function MediaCard(props) {
       </CardActionArea>
 
 
-      <CardActionArea className={classes.description} style={{backgroundColor:"#182f34"}}>
-        <CardContent  align="center">
+      <CardActionArea className={classes.description} style={{backgroundColor:"#182f34",fontFamily:'Open Sans'}}>
+
+
+        <CardContent  align="flex-center" style={{   paddingTop: '25%'}}>
           <Typography gutterBottom  variant="h5" component="h2">
               {props.name}
           </Typography>
-        </CardContent>
-        <CardContent  align="flex-start">
-          <Typography className={classes.typography} variant="body2" color="primary" component="p">
+          <Typography className={classes.typography} variant="body1" color="primary" component="p">
               <div style={{  display: 'flex',  alignItems: 'center' ,color:'white'}}>
-              <LocationCityTwoToneIcon color = 'primary' fontSize = "small" style={{   paddingRight: 8, paddingBottom: 4 }} />
+              <LocationCityTwoToneIcon color = 'primary' fontSize = "medium" style={{   paddingRight: 8, paddingBottom: 4 }} />
               {props.location}
               </div>
           </Typography>
-          <Typography className={classes.typography} variant="body2" color="primary" component="p">
+          <Typography className={classes.typography} variant="body1" color="primary" component="p">
             <div style={{  display: 'flex',  alignItems: 'center' ,color:'white'}}>
-              <WorkTwoToneIcon color = 'primary' style={{   paddingRight: 8, paddingBottom: 4  }} fontSize = "small" />  {props.profession}
+              <WorkTwoToneIcon color = 'primary' style={{   paddingRight: 8, paddingBottom: 4  }} fontSize = "medium" />  {props.profession}
             </div>
           </Typography>
-          <Typography className={classes.typography} variant="body2" color="primary" component="p">
+          <Typography className={classes.typography} variant="body1" color="primary" component="p">
             <div style={{  display: 'flex',  alignItems: 'center' ,color:'white'}}>
-              <SchoolTwoToneIcon color = 'primary' style={{  paddingRight: 8, paddingBottom: 4 }}  fontSize = "small" />  {props.company}
+              <SchoolTwoToneIcon color = 'primary' style={{  paddingRight: 8, paddingBottom: 4 }}  fontSize = "medium" />  {props.company}
             </div>
           </Typography>
-        </CardContent>
+
+    </CardContent>
+
       </CardActionArea>
-
-
-        <Button target="_blank" component='a' href="https://github.com/ashuprabhune" style={{width:"50%",backgroundColor:"black",color:"white",textTransform:"none"}}><CardActions><GitHubIcon style={{paddingRight:5}}/>{'  GitHub'}</CardActions></Button>
-          <Button target="_blank" component='a' href="https://www.linkedin.com/in/ashish-prabhune/"  style={{width:"50%",backgroundColor:"#2867B2",color:"white", textTransform:"none"}}><CardActions>Linked<LinkedInIcon/></CardActions></Button>
-
-
-
+      <CardContent className={classes.footer} style={{padding:0}}>
+        <CardActionArea target="_blank"  component='a' href="https://github.com/ashuprabhune" style={{width:"50%",backgroundColor:"black",color:"white",textTransform:"none",margin:0}}>
+        <CardActions  style={{justifyContent:'center', height:'inherit'}}><GitHubIcon style={{paddingRight:5}}/>{'  GitHub'}</CardActions>
+       </CardActionArea>
+        <CardActionArea target="_blank"  component='a' href="https://www.linkedin.com/in/ashish-prabhune/" style={{width:"50%",backgroundColor:"#2867B2",color:"white", textTransform:"none"}}>
+          <CardActions  style={{justifyContent:'center', height:'inherit'}}>Linked<LinkedInIcon/></CardActions>
+        </CardActionArea>
+      </CardContent>
     </Card>
   </ThemeProvider>
 

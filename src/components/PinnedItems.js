@@ -152,7 +152,7 @@ class PinnedItems extends Component {
     <Aux>
         <Header />
     <Grid container   style={{paddingTop:"0%",paddingBottom:"2%"}}>
-
+      <Grid container direction="row"  spacing={3} alignItems="stretch" style={{paddingTop:"1%",paddingBottom:"2%"}}>
       <Query query={GET_BIO_INFO} key={"1"}>
         {({ loading, error, data }) => (
           <Aux>
@@ -165,7 +165,7 @@ class PinnedItems extends Component {
           </Aux>
         )}
       </Query>
-
+    </Grid>
 
     <Grid container direction="row" spacing={3}  alignItems="stretch" style={{paddingTop:"2%",paddingBottom:"2%"}}>
       <Query query={GET_REPO_INFO}>

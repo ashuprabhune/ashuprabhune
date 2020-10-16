@@ -15,8 +15,17 @@ import { red } from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { createMuiTheme,ThemeProvider  } from '@material-ui/core/styles';
 import Divider from "@material-ui/core/Divider";
+import WorkTwoToneIcon from '@material-ui/icons/WorkTwoTone';
+import StarTwoToneIcon from '@material-ui/icons/StarTwoTone';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+
+
 const ReactMarkdown = require('react-markdown')
 const htmlParser = require('react-markdown/plugins/html-parser')
+
 const parseHtml = htmlParser({
   isValidNode: node => node.type !== 'script',
   processingInstructions: [/* ... */]
@@ -28,7 +37,7 @@ const theme = createMuiTheme({
       main:"#4faeae",
     },
     secondary: {
-      main: '#6a6c6c',
+      main: '#4faeae',
     },
     ternary:{
       main: '#37393a',
@@ -41,9 +50,8 @@ const theme = createMuiTheme({
 const useStyles = makeStyles((theme) => ({
   root: {
     minWidth:350,
+    height:'inherit',
     color:'white',
-
-    height: "100%",
     borderRadius: '10px',
     padding:'auto',
     ["@media(max-width: 1200px )"]:{
@@ -51,6 +59,18 @@ const useStyles = makeStyles((theme) => ({
     },
     fontFamily: 'Open Sans'
 
+  },
+  description:{
+    display:'flex',
+    flexDirection: 'column',
+    height:'100%',
+
+    alignSelf:'flex-start'
+
+  },
+  footer:{
+    bottom:0,
+    display:'flex',
   },
   media: {
     height: 0,
@@ -82,12 +102,12 @@ export default function RecipeReviewCard(props) {
 
   return (
     <ThemeProvider theme={theme}>
-    <Card className={classes.root} style={{backgroundColor:"#182f34"}}>
-      <ReactMarkdown  source={props.text}
-  escapeHtml={false}
-
-/>
-      <CardActions style = {{padding:0}}>
+    <Card className={classes.root} style={{backgroundColor:"#182f34" ,padding:'3%', position: "relative"}}>
+      <CardContent className={classes.description}>
+      <ReactMarkdown
+        source={props.text}
+        escapeHtml={false}/>
+      <CardActions style = {{}}>
           <AnimatePresence exitBeforeEnter initial={false}>
                          {readMore ? (
                            <>
@@ -108,19 +128,45 @@ export default function RecipeReviewCard(props) {
                                </Button>
 
 
-          <p>
-            Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-            minutes.
+          <p><Typography>
+                      <div
+                        style={{
 
-            Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
-            heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
-            browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving chicken
-            and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion, salt and
-            pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add
-            saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
-            nd mussels, tucking them down into the rice, and cook
-            again without stirring, uopened and rice is just tender, 5 to 7
-            minutes more. (Discard any mussels that don’t open.)
+                          paddingTop: 10,
+                          fontFamily:'Open Sans'
+                        }}
+                      >
+            <div style={{  display: 'flex',  alignItems: 'center' ,color:'white'}}>
+            <WorkTwoToneIcon color="secondary" fontSize="medium" style={{   paddingRight: 8, paddingBottom: 4 }}/>
+
+
+          <i>Senior Software Engineer</i> &nbsp; - &nbsp;Persistent Systems</div>
+
+
+
+              <p>I have worked with Persistent Systems Ltd. as a Senior Software Engineer, where I had an excellent opportunity to work with a leading US financial institution that provided settlement service in the foreign exchange markets. My role was to develop various algorithms that facilitated the settlement system. This project has given me extensive knowledge and understanding of the software development life cycle. I was involved right from the requirement gathering to the deployment and maintenance of the software</p></div>
+
+          </Typography>
+          </p>
+
+          <p><Typography>
+
+
+          <List>
+              <ListItem>
+                <ListItemIcon>
+                  <StarTwoToneIcon color="secondary" fontSize="medium" />
+                </ListItemIcon>
+                <ListItemText primary="Awarded 3rd prize for paper “GestTalk – RealTime Gesture to Speech Conversion Glove” at 3rd International Conference on Data Management, Analytics & Innovation, KL, Malaysia." />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <StarTwoToneIcon color="secondary" fontSize="medium" />
+                  </ListItemIcon>
+                  <ListItemText primary="Recipient of Excellence in Technology Award for research contributions at Persistent Systems." />
+                  </ListItem>
+            </List>
+          </Typography>
           </p>
 
           </motion.div>
@@ -143,8 +189,11 @@ export default function RecipeReviewCard(props) {
 
               </AnimatePresence>
 </CardActions>
-
-
+</CardContent>
+<CardContent className={classes.footer}>
+    <Typography style={{position: "absolute",
+    bottom: 10}}>Thank you for your time! Please feel free to reach out if you have any feedback, suggestion or if I can help you in any way.</Typography>
+  </CardContent>
     </Card>
     </ThemeProvider>
   );

@@ -121,6 +121,10 @@ const useStyles = makeStyles({
     backgroundColor: '#e34c26',
     color:'white'
   },
+  graphql:{
+    backgroundColor: '#d11b95',
+    color:'white'
+  },
   css:{
     backgroundColor: '#62B132',
     color:'white'
@@ -159,7 +163,8 @@ export default function MediaCard(props) {
                   'cpp':'cpp',
                   'clojure' : 'clojure',
                   'spring-boot' : 'springboot',
-                  'html':'html5'
+                  'html':'html5',
+                  'graphql':'graphql',
                   };
   const classes = useStyles();
   const classes1 = useStyles1();
