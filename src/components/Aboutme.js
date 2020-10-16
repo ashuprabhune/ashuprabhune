@@ -12,6 +12,7 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import { createMuiTheme,ThemeProvider  } from '@material-ui/core/styles';
 import LocationCityTwoToneIcon from '@material-ui/icons/LocationCityTwoTone';
 import WorkTwoToneIcon from '@material-ui/icons/WorkTwoTone';
+import PhoneAndroidTwoToneIcon from '@material-ui/icons/PhoneAndroidTwoTone';
 
 import SchoolTwoToneIcon from '@material-ui/icons/SchoolTwoTone';
 
@@ -33,7 +34,7 @@ const theme = createMuiTheme({
 const useStyles = makeStyles({
   root: {
 
-    
+
     color:"white",
     borderRadius:"10px",
     paddingBottom:"0",
@@ -167,9 +168,9 @@ export default function MediaCard(props) {
     <Card className={classes.root} >
 
       <CardActionArea className={classes.header} style={{backgroundColor:"#274f59",fontFamily:'Open Sans'}}>
-        <div className={classes1.root}>
+        <div className={classes1.root} style={{paddingTop:10}}>
           {props.topics.map((index) => {
-            return <Chip  color="secondary" className= {classes[colors[index]]} key={index} size="small" style={{ fontSize: 12, boxShadow: "1px 1px 1px #2b2d2d "}}  label={index} />
+            return <Chip  color="secondary" className= {classes[colors[index]]} key={index} size="small" style={{ fontSize: 12, boxShadow: "1px 1px 1px #2b2d2d ", }}  label={index} />
           })}
         </div>
           <Avatar  className={classes.avatar}  src={props.avatarUrl} />
@@ -199,7 +200,11 @@ export default function MediaCard(props) {
               <SchoolTwoToneIcon color = 'primary' style={{  paddingRight: 8, paddingBottom: 4 }}  fontSize = "medium" />  {props.company}
             </div>
           </Typography>
-
+          <Typography className={classes.typography} variant="body1" color="primary" component="p">
+            <div style={{  display: 'flex',  alignItems: 'center' ,color:'white'}}>
+            <PhoneAndroidTwoToneIcon color = 'primary' style={{  paddingRight: 8, paddingBottom: 4 }}  fontSize = "medium" /> 513-908-1359
+            </div>
+          </Typography>
     </CardContent>
 
       </CardActionArea>

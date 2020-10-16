@@ -182,7 +182,7 @@ export default function MediaCard(props) {
   <ThemeProvider theme={theme}>
     <Card className={classes.root}>
       <CardActionArea className = {classes.header} style={{backgroundColor:"#274f59" }}>
-        <div className={classes1.root}>
+        <div className={classes1.root} style={{padding:10}}>
           {props.topics.map((index) => {
 
             return <Chip color="secondary" key={index} className= {classes[colors[index]]} size="small" style={{ fontSize: 12, boxShadow: "1px 1px 1px #2b2d2d ",fontFamily:'Open Sans'}}  label={index} />

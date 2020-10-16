@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     height:'inherit',
     color:'white',
     borderRadius: '10px',
-    padding:'auto',
+
     ["@media(max-width: 1200px )"]:{
 
     },
@@ -102,11 +102,14 @@ export default function RecipeReviewCard(props) {
 
   return (
     <ThemeProvider theme={theme}>
-    <Card className={classes.root} style={{backgroundColor:"#182f34" ,padding:'3%', position: "relative"}}>
-      <CardContent className={classes.description}>
+    <Card className={classes.root} style={{backgroundColor:"#182f34" ,paddingLeft:'2%', paddingRight:'2%',position: "relative"}}>
+      <CardContent className={classes.description} style={{padding:0}}>
+      <CardContent>
       <ReactMarkdown
         source={props.text}
         escapeHtml={false}/>
+      </CardContent>
+      <CardContent>
       <CardActions style = {{}}>
           <AnimatePresence exitBeforeEnter initial={false}>
                          {readMore ? (
@@ -188,11 +191,13 @@ export default function RecipeReviewCard(props) {
                   )}
 
               </AnimatePresence>
+
 </CardActions>
 </CardContent>
-<CardContent className={classes.footer}>
+</CardContent>
+<CardContent className={classes.footer} style={{paddingLeft:'2%', paddingRight:'2%'}}>
     <Typography style={{position: "absolute",
-    bottom: 10}}>Thank you for your time! Please feel free to reach out if you have any feedback, suggestion or if I can help you in any way.</Typography>
+    bottom: 10}}><b>Thank you for your time! Please feel free to reach out if you have any feedback, suggestion or if I can help you in any way.</b></Typography>
   </CardContent>
     </Card>
     </ThemeProvider>
